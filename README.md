@@ -1,5 +1,7 @@
 [![Code Climate](https://codeclimate.com/github/jdguzman/rallio/badges/gpa.svg)](https://codeclimate.com/github/jdguzman/rallio)
 [![Build Status](https://travis-ci.org/jdguzman/rallio.svg?branch=master)](https://travis-ci.org/jdguzman/rallio)
+[![Test Coverage](https://codeclimate.com/github/jdguzman/rallio/badges/coverage.svg)](https://codeclimate.com/github/jdguzman/rallio/coverage)
+[![Issue Count](https://codeclimate.com/github/jdguzman/rallio/badges/issue_count.svg)](https://codeclimate.com/github/jdguzman/rallio)
 
 # Rallio
 

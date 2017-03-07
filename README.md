@@ -80,6 +80,19 @@ user.access_token
 # => <Rallio::AccessToken @access_token="4a25dd89e50bd0a0db1eeae65864fe6b", @user_id=100, @expires_at=nil, @scopes="user_info basic_access">
 ```
 
+### SignOnToken
+
+#### .create
+
+A sign-on token can also be created independently of a user object. Calling the
+`SignOnToken.create` method with a user id will return a sign-on token for that
+user.
+
+```ruby
+Rallio::SignOnToken.create(user_id: 100)
+# => <Rallio::SignOnToken:0x007fa9d703b7d0 @token="15ad86b2ede6", @expires_at=#<DateTime: 2015-04-16T23:5...,321000000n),+0s,2299161j)>, @url="https://app.rallio.com/api/internal/sign_on_tokens/15ad86b2ede6">
+```
+
 ### Access Token
 
 #### .create

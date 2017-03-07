@@ -43,7 +43,7 @@ Rallio.application_secret = '<your secret>'       # => '<your secret>'
 
 ### User
 
-#### Accessible Users
+#### .accessible_users
 
 The user class can be used to access all available users for a given
 application.
@@ -54,7 +54,7 @@ Rallio::User.accessible_users
 # [<Rallio::User:0x007fc325b36808 @id=100, @email="bob@yourcompany.com", @first_name="Bob", @last_name="Anderson", @accounts=[], @franchisors=[]>]
 ```
 
-#### Single Sign-on Tokens
+#### #sign_on_tokens
 
 With an instantiated user object you can call to get a single sign-on token
 for the given user.
@@ -67,7 +67,7 @@ user.sign_on_tokens
 # => <Rallio::SignOnToken @token="15ad86b2ede6", @expires_at=#<DateTime: 2015-04-16T23:5...,321000000n),+0s,2299161j)>, @url="https://app.rallio.com/api/internal/sign_on_tokens/15ad86b2ede6">
 ```
 
-#### Access Token
+#### #access_token
 
 With an instantiated user object you can call to get an access token for the
 given user.
@@ -82,7 +82,7 @@ user.access_token
 
 ### Access Token
 
-#### Create
+#### .create
 
 An access token can also be created independently of a user object. Calling the
 `AccessToken.create` method with a user id will return an access token for that

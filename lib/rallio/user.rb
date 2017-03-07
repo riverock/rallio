@@ -4,8 +4,8 @@ module Rallio
     attribute :email, String
     attribute :first_name, String
     attribute :last_name, String
-    attribute :accounts, Array[Hash]
-    attribute :franchisors, Array[Hash]
+    attribute :accounts, Array[Account]
+    attribute :franchisors, Array[Franchisor]
 
     def self.accessible_users
       response = self.get('/accessible_users', headers: app_credentials)

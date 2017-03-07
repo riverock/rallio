@@ -80,6 +80,19 @@ user.access_token
 # => <Rallio::AccessToken @access_token="4a25dd89e50bd0a0db1eeae65864fe6b", @user_id=100, @expires_at=nil, @scopes="user_info basic_access">
 ```
 
+### Access Token
+
+#### Create
+
+An access token can also be created independently of a user object. Calling the
+`AccessToken.create` method with a user id will return an access token for that
+user.
+
+```ruby
+Rallio::AccessToken.create(user_id: 100)
+# => <Rallio::AccessToken:0x007fd3fc9fea70 @access_token="4a25dd89e50bd0a0db1eeae65864fe6b", @user_id=100, @expires_at=nil, @scopes="user_info basic_access">
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

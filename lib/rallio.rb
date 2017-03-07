@@ -1,11 +1,10 @@
 require 'httparty'
 require 'virtus'
-require 'rallio/version'
-require 'rallio/base'
-require 'rallio/user'
-require 'rallio/sign_on_token'
+require 'autoloaded'
 
 module Rallio
+  Autoloaded.class {}
+
   def self.application_id=(value)
     @application_id = value
   end

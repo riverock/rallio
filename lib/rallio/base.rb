@@ -5,8 +5,6 @@ module Rallio
 
     base_uri 'https://app.rallio.com/api/v1'
 
-    private
-
     def self.app_credentials
       {
         'X-Application-ID' => Rallio.application_id,

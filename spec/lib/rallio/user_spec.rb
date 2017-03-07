@@ -41,10 +41,15 @@ module Rallio
         }
       end
       let(:parsed_response) { sign_on_token }
+      let(:token) { SignOnToken.new(sign_on_token) }
       let(:user) { described_class.new(accessible_users[:users].first) }
 
-      it 'calls out to get a single sign on token' do
-        expect(described_class).to receive(:post).with("/users/#{user.id}/sign_on_tokens", headers: headers)
+      before do
+        allow(SignOnToken).to receive(:create).and_return(token)
+      end
+
+      it 'calls create on SignOnToken with user id' do
+        expect(SignOnToken).to receive(:create).with(user_id: user.id)
         user.sign_on_tokens
       end
 

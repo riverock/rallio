@@ -1,9 +1,12 @@
 module Rallio
-  class SignOnToken
-    include Virtus.model
-
+  class SignOnToken < Base
     attribute :token, String
     attribute :expires_at, DateTime
     attribute :url, String
+
+    def self.create(user_id:)
+      response = self.post("/users/#{user_id}/sign_on_tokens", headers: app_credentials)
+      new response.parsed_response
+    end
   end
 end

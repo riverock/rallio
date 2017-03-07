@@ -19,5 +19,12 @@ module Rallio
     def access_token
       @access_token ||= AccessToken.create(user_id: id)
     end
+
+    def me
+      headers = { 'Authentication' => "Bearer #{access_token.access_token}" }
+      response = self.class.get('/users/me', headers: headers)
+      self.attributes = response.parsed_response
+      self
+    end
   end
 end

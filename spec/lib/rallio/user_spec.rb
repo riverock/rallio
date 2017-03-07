@@ -1,6 +1,6 @@
 module Rallio
   describe User do
-    let(:parsed_response) { Hash.new }
+    let(:parsed_response) { accessible_users }
     let(:api_response) { double(:api_response, parsed_response: parsed_response) }
 
     before do
@@ -79,6 +79,39 @@ module Rallio
       it 'sets the @access_token ivar' do
         subject.access_token
         expect(subject.instance_variable_get(:@access_token)).to eq token
+      end
+    end
+
+    describe '#me' do
+      let(:token) { Rallio::AccessToken.new(access_token) }
+      let(:headers) { { 'Authentication' => "Bearer #{token.access_token}" } }
+
+      subject { described_class.new(user_response) }
+
+      before do
+        allow(AccessToken).to receive(:create).and_return(token)
+      end
+
+      it 'calls out to get authenticated users info' do
+        expect(described_class).to receive(:get).with('/users/me', headers: headers)
+        subject.me
+      end
+
+      context 'user data changed' do
+        let(:parsed_response) { user_response }
+
+        before do
+          parsed_response[:last_name] = 'Geldoff'
+        end
+
+        it 'updates the user info to reflect changes' do
+          subject.me
+          expect(subject.last_name).to eq parsed_response[:last_name]
+        end
+
+        it 'returns and instance of Rallio::User' do
+          expect(subject.me).to be_a Rallio::User
+        end
       end
     end
   end

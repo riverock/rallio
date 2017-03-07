@@ -42,4 +42,8 @@ module ResponseFixtures
       "scopes": "user_info basic_access"
     }
   end
+
+  def user_response
+    accessible_users[:users].first
+  end
 end

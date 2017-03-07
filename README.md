@@ -80,6 +80,20 @@ user.access_token
 # => <Rallio::AccessToken @access_token="4a25dd89e50bd0a0db1eeae65864fe6b", @user_id=100, @expires_at=nil, @scopes="user_info basic_access">
 ```
 
+#### #me
+
+This calls out and gets the user info for a given id. All that is needed is to
+instantiate an instance with a valid user id an calling me will pull the rest
+of the information.
+
+```ruby
+user = Rallio::User.new(id: 100)
+# => <Rallio::User @id=100, @email=nil, @first_name=nil, @last_name=nil, @accounts=[], @franchisors=[]>
+
+user.me
+# => <Rallio::User @id=100, @email="bob@yourcompany.com", @first_name="Bob", @last_name="Anderson", @accounts=[], @franchisors=[]>
+```
+
 ### SignOnToken
 
 #### .create

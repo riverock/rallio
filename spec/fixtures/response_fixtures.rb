@@ -33,4 +33,13 @@ module ResponseFixtures
       }
     }
   end
+
+  def access_token
+    {
+      "access_token": "4a25dd89e50bd0a0db1eeae65864fe6b",
+      "user_id": 100,
+      "expires_at": nil,
+      "scopes": "user_info basic_access"
+    }
+  end
 end

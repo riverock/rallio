@@ -16,5 +16,9 @@ module Rallio
       response = self.class.post("/users/#{id}/sign_on_tokens", headers: app_credentials)
       SignOnToken.new response.parsed_response[:sign_on_token]
     end
+
+    def access_token
+      @access_token ||= AccessToken.create(user_id: id)
+    end
   end
 end

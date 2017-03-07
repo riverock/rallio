@@ -61,10 +61,23 @@ for the given user.
 
 ```ruby
 user
-# => <Rallio::User:0x007fc325b36808 @id=100, @email="bob@yourcompany.com", @first_name="Bob", @last_name="Anderson", @accounts=[], @franchisors=[]>
+# => <Rallio::User @id=100, @email="bob@yourcompany.com", @first_name="Bob", @last_name="Anderson", @accounts=[], @franchisors=[]>
 
 user.sign_on_tokens
-# => <Rallio::SignOnToken:0x007fb915beb948 @token="15ad86b2ede6", @expires_at=#<DateTime: 2015-04-16T23:5...,321000000n),+0s,2299161j)>, @url="https://app.rallio.com/api/internal/sign_on_tokens/15ad86b2ede6">
+# => <Rallio::SignOnToken @token="15ad86b2ede6", @expires_at=#<DateTime: 2015-04-16T23:5...,321000000n),+0s,2299161j)>, @url="https://app.rallio.com/api/internal/sign_on_tokens/15ad86b2ede6">
+```
+
+#### Access Token
+
+With an instantiated user object you can call to get an access token for the
+given user.
+
+```ruby
+user
+# => <Rallio::User @id=100, @email="bob@yourcompany.com", @first_name="Bob", @last_name="Anderson", @accounts=[], @franchisors=[]>
+
+user.access_token
+# => <Rallio::AccessToken @access_token="4a25dd89e50bd0a0db1eeae65864fe6b", @user_id=100, @expires_at=nil, @scopes="user_info basic_access">
 ```
 
 ## Development

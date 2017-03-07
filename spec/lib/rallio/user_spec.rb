@@ -52,5 +52,29 @@ module Rallio
         expect(user.sign_on_tokens).to be_a SignOnToken
       end
     end
+
+    describe '#access_token' do
+      let(:token) { Rallio::AccessToken.new(access_token) }
+
+      subject { described_class.new(accessible_users[:users].first) }
+
+      before do
+        allow(AccessToken).to receive(:create).and_return(token)
+      end
+
+      it 'creates and instance of AccessToken with user id' do
+        expect(AccessToken).to receive(:create).with(user_id: subject.id)
+        subject.access_token
+      end
+
+      it 'returns an AccessToken instance' do
+        expect(subject.access_token).to be_a Rallio::AccessToken
+      end
+
+      it 'sets the @access_token ivar' do
+        subject.access_token
+        expect(subject.instance_variable_get(:@access_token)).to eq token
+      end
+    end
   end
 end

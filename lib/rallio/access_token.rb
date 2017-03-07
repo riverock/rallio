@@ -9,5 +9,11 @@ module Rallio
       response = self.post("/users/#{user_id}/access_token", headers: app_credentials)
       new response.parsed_response
     end
+
+    def destroy
+      headers = { 'Authentication' => "Bearer #{access_token}" }
+      self.class.delete('/access_token', headers: headers)
+      true
+    end
   end
 end

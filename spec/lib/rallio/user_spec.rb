@@ -62,7 +62,7 @@ module Rallio
         allow(AccessToken).to receive(:create).and_return(token)
       end
 
-      it 'creates and instance of AccessToken with user id' do
+      it 'calls create on AccessToken with user id' do
         expect(AccessToken).to receive(:create).with(user_id: subject.id)
         subject.access_token
       end

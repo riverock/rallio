@@ -1,8 +1,9 @@
 module Rallio
-  class Franchisor
-    include Virtus.model
+  class Franchisor < Account
+    private
 
-    attribute :id, Integer
-    attribute :name, String
+    def type
+      :franchisors
+    end
   end
 end

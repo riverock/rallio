@@ -34,9 +34,9 @@ module Rallio
 
     def me
       raise StandardError, "this endpoint isn't implemented yet"
-      response = self.class.get('/users/me', headers: user_credentials)
-      self.attributes = response.parsed_response
-      self
+      # response = self.class.get('/users/me', headers: user_credentials)
+      # self.attributes = response.parsed_response
+      # self
     end
 
     private

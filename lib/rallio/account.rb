@@ -8,7 +8,7 @@ module Rallio
     attribute :country_code, String
     attribute :time_zone, String
 
-    def reviews(access_token: access_token)
+    def reviews(access_token:)
       Review.all(type: type, id: id, access_token: access_token)
     end
 

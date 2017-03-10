@@ -6,19 +6,7 @@ module ResponseFixtures
           "id" => 100,
           "email" => "bob@yourcompany.com",
           "first_name" => "Bob",
-          "last_name" => "Anderson",
-          "accounts" => [
-            {
-              "id" => 200,
-              "name" => "Rally-O Tires Los Angeles"
-            }
-          ],
-          "franchisors" => [
-            {
-              "id" => 300,
-              "name" => "Rally-O Tires"
-            }
-          ]
+          "last_name" => "Anderson"
         }
       ]
     }

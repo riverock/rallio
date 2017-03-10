@@ -33,6 +33,34 @@ module Rallio
       end
     end
 
+    describe '.create' do
+      let(:headers) do
+        {
+          'X-Application-ID' => Rallio.application_id,
+          'X-Application-Secret' => Rallio.application_secret
+        }
+      end
+      let(:parsed_response) { user_response }
+      let(:body) do
+        {
+          user: {
+            email: 'example@example.com',
+            first_name: 'John',
+            last_name: 'Doe'
+          }
+        }
+      end
+
+      it 'calls out to create a new user' do
+        expect(described_class).to receive(:post).with('/users', headers: headers, body: body)
+        described_class.create(user: body[:user])
+      end
+
+      it 'returns a User object' do
+        expect(described_class.create(user: body[:user])).to be_a Rallio::User
+      end
+    end
+
     describe '#sign_on_tokens' do
       let(:headers) do
         {

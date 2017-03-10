@@ -14,6 +14,11 @@ module Rallio
       response.parsed_response['users'].map { |u| User.new(u) }
     end
 
+    def self.create(user:)
+      response = self.post('/users', headers: app_credentials, body: { user: user })
+      new response.parsed_response['user']
+    end
+
     def sign_on_tokens
       SignOnToken.create(user_id: id)
     end

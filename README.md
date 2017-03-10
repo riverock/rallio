@@ -54,6 +54,17 @@ Rallio::User.accessible_users
 # [<Rallio::User:0x007fc325b36808 @id=100, @email="bob@yourcompany.com", @first_name="Bob", @last_name="Anderson", @accounts=[], @franchisors=[]>]
 ```
 
+#### .create
+
+Creates a new user on the Rallio platform.
+
+```ruby
+# To create a user a hash with email, first_name and last_name keys must be
+# supplied.
+Rallio::User.create(user: { email: 'me@example.com', first_name: 'John', last_name: 'Doe' })
+# => { user: { id: 100, first_name: 'John', last_name: 'Doe', email: 'me@example.com' } }
+```
+
 #### #sign_on_tokens
 
 With an instantiated user object you can call to get a single sign-on token

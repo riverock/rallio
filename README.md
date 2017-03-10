@@ -82,6 +82,9 @@ user.access_token
 
 #### #me
 
+**NOTE:** This endpoint is in the docs but it appears it may not be implemented.
+This will remain here until that is cleared up.
+
 This calls out and gets the user info for a given id. All that is needed is to
 instantiate an instance with a valid user id an calling me will pull the rest
 of the information.

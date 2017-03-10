@@ -124,6 +124,9 @@ module Rallio
       end
     end
 
+    # Initially this endpoint was in the API docs but it appears it may not be
+    # implemented. This is here until that gets cleared up.
+    #
     # describe '#me' do
     #   let(:token) { Rallio::AccessToken.new(access_token) }
     #   let(:headers) { { 'Authorization' => "Bearer #{token.access_token}" } }

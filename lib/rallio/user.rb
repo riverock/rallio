@@ -32,6 +32,9 @@ module Rallio
       response.parsed_response
     end
 
+    # Initially this endpoint was in the API docs but it appears it may not be
+    # implemented. This is here until that gets cleared up.
+    #
     # def me
     #   response = self.class.get('/users/me', headers: user_credentials)
     #   self.attributes = response.parsed_response

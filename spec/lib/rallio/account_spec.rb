@@ -1,7 +1,7 @@
 module Rallio
   describe Account do
     let(:account) { Rallio::Account.new(id: 9397) }
-    let(:token) { access_token['access_token'] }
+    let(:token) { access_tokens_response['access_token'] }
 
     subject { account }
 

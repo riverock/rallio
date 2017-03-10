@@ -1,6 +1,6 @@
 module Rallio
   describe User do
-    let(:parsed_response) { accessible_users }
+    let(:parsed_response) { accessible_users_response }
     let(:api_response) { double(:api_response, parsed_response: parsed_response) }
 
     before do
@@ -17,7 +17,7 @@ module Rallio
           'X-Application-Secret' => Rallio.application_secret
         }
       end
-      let(:parsed_response) { accessible_users }
+      let(:parsed_response) { accessible_users_response }
 
       it 'calls out to get accessible users for app' do
         expect(described_class).to receive(:get).with('/accessible_users', headers: headers)
@@ -40,9 +40,9 @@ module Rallio
           'X-Application-Secret' => Rallio.application_secret
         }
       end
-      let(:parsed_response) { sign_on_token }
-      let(:token) { SignOnToken.new(sign_on_token) }
-      let(:user) { described_class.new(accessible_users['users'].first) }
+      let(:parsed_response) { sign_on_tokens_response }
+      let(:token) { SignOnToken.new(sign_on_tokens_response) }
+      let(:user) { described_class.new(accessible_users_response['users'].first) }
 
       before do
         allow(SignOnToken).to receive(:create).and_return(token)
@@ -59,9 +59,9 @@ module Rallio
     end
 
     describe '#access_token' do
-      let(:token) { Rallio::AccessToken.new(access_token) }
+      let(:token) { Rallio::AccessToken.new(access_tokens_response) }
 
-      subject { described_class.new(accessible_users['users'].first) }
+      subject { described_class.new(accessible_users_response['users'].first) }
 
       before do
         allow(AccessToken).to receive(:create).and_return(token)
@@ -84,7 +84,7 @@ module Rallio
 
     describe '#account_ownerships' do
       let(:parsed_response) { account_ownerships_response }
-      let(:token) { Rallio::AccessToken.new(access_token) }
+      let(:token) { Rallio::AccessToken.new(access_tokens_response) }
       let(:headers) { { 'Authorization' => "Bearer #{token.access_token}" } }
 
       subject { described_class.new(user_response) }
@@ -105,7 +105,7 @@ module Rallio
 
     describe '#franchisor_ownerships' do
       let(:parsed_response) { franchisor_ownerships_response }
-      let(:token) { Rallio::AccessToken.new(access_token) }
+      let(:token) { Rallio::AccessToken.new(access_tokens_response) }
       let(:headers) { { 'Authorization' => "Bearer #{token.access_token}" } }
 
       subject { described_class.new(user_response) }
@@ -128,7 +128,7 @@ module Rallio
     # implemented. This is here until that gets cleared up.
     #
     # describe '#me' do
-    #   let(:token) { Rallio::AccessToken.new(access_token) }
+    #   let(:token) { Rallio::AccessToken.new(access_tokens_response) }
     #   let(:headers) { { 'Authorization' => "Bearer #{token.access_token}" } }
     #
     #   subject { described_class.new(user_response) }

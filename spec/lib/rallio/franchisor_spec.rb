@@ -1,7 +1,7 @@
 module Rallio
   describe Franchisor do
     let(:franchisor) { Rallio::Franchisor.new(id: 9397) }
-    let(:token) { access_token['access_token'] }
+    let(:token) { access_tokens_response['access_token'] }
     let(:parsed_response) { franchisors_response }
     let(:api_response) { double(:api_response, parsed_response: parsed_response) }
 

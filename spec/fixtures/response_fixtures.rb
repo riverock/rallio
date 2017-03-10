@@ -1,5 +1,5 @@
 module ResponseFixtures
-  def accessible_users
+  def accessible_users_response
     {
       "users" => [
         {
@@ -24,7 +24,7 @@ module ResponseFixtures
     }
   end
 
-  def sign_on_token
+  def sign_on_tokens_response
     {
       "sign_on_token" => {
         "token" => "15ad86b2ede6",
@@ -34,7 +34,7 @@ module ResponseFixtures
     }
   end
 
-  def access_token
+  def access_tokens_response
     {
       "access_token" => "4a25dd89e50bd0a0db1eeae65864fe6b",
       "user_id" => 100,
@@ -44,7 +44,7 @@ module ResponseFixtures
   end
 
   def user_response
-    accessible_users['users'].first
+    accessible_users_response['users'].first
   end
 
   def reviews_response

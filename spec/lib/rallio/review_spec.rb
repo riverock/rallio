@@ -1,6 +1,6 @@
 module Rallio
   describe Review do
-    let(:token) { access_token[:access_token] }
+    let(:token) { access_tokens_response[:access_token] }
     let(:headers) { { 'Authorization' => "Bearer #{token}" } }
     let(:parsed_response) { reviews_response }
     let(:api_response) { double(:api_response, parsed_response: parsed_response) }

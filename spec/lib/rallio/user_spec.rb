@@ -126,7 +126,7 @@ module Rallio
 
     # describe '#me' do
     #   let(:token) { Rallio::AccessToken.new(access_token) }
-    #   let(:headers) { { 'Authentication' => "Bearer #{token.access_token}" } }
+    #   let(:headers) { { 'Authorization' => "Bearer #{token.access_token}" } }
     #
     #   subject { described_class.new(user_response) }
     #

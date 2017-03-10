@@ -126,8 +126,8 @@ module Rallio
         subject.account_ownerships
       end
 
-      it 'returns a hash' do
-        expect(subject.account_ownerships).to be_a Hash
+      it 'returns an array of AccountOwnerships' do
+        expect(subject.account_ownerships).to include(a_kind_of(AccountOwnership))
       end
     end
 
@@ -147,8 +147,8 @@ module Rallio
         subject.franchisor_ownerships
       end
 
-      it 'returns a hash' do
-        expect(subject.franchisor_ownerships).to be_a Hash
+      it 'returns an array of FranchisorOwnerships' do
+        expect(subject.franchisor_ownerships).to include(a_kind_of(FranchisorOwnership))
       end
     end
 

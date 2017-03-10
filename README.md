@@ -93,6 +93,24 @@ user.access_token
 # => <Rallio::AccessToken @access_token="4a25dd89e50bd0a0db1eeae65864fe6b", @user_id=100, @expires_at=nil, @scopes="user_info basic_access">
 ```
 
+#### #account_ownerships
+
+Returns all the accounts this user is associated with.
+
+```ruby
+user.account_ownerships
+# => [#<Rallio::AccountOwnership:0x007fc3aaaa70b0 @user_id=100, @account_id=200, @account_name="Awesome Haircuts New York City", @account_franchisor_id=300, @account_franchisor_name="Awesome Haircuts Franchisor 1">]
+```
+
+#### #franchisor_ownerships
+
+Returns all the franchisors this user is associated with.
+
+```ruby
+user.franchisor_ownerships
+# => [#<Rallio::FranchisorOwnership:0x007f93d8986340 @user_id=100, @franchisor_id=300, @franchisor_name="Awesome Haircuts Franchisor 1">]
+```
+
 #### #me
 
 **NOTE:** This endpoint is in the docs but it appears it may not be implemented.

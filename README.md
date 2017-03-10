@@ -65,16 +65,17 @@ Rallio::User.create(user: { email: 'me@example.com', first_name: 'John', last_na
 # => { user: { id: 100, first_name: 'John', last_name: 'Doe', email: 'me@example.com' } }
 ```
 
-#### #sign_on_tokens
+#### #sign_on_token
 
 With an instantiated user object you can call to get a single sign-on token
-for the given user.
+for the given user. These tokens last for 5 minutes and allow the user to be
+signed into the Rallio platform by visiting the given url.
 
 ```ruby
 user
 # => <Rallio::User @id=100, @email="bob@yourcompany.com", @first_name="Bob", @last_name="Anderson", @accounts=[], @franchisors=[]>
 
-user.sign_on_tokens
+user.sign_on_token
 # => <Rallio::SignOnToken @token="15ad86b2ede6", @expires_at=#<DateTime: 2015-04-16T23:5...,321000000n),+0s,2299161j)>, @url="https://app.rallio.com/api/internal/sign_on_tokens/15ad86b2ede6">
 ```
 

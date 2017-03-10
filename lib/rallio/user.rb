@@ -19,7 +19,7 @@ module Rallio
       new response.parsed_response['user']
     end
 
-    def sign_on_tokens
+    def sign_on_token
       SignOnToken.create(user_id: id)
     end
 

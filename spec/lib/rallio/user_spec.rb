@@ -61,7 +61,7 @@ module Rallio
       end
     end
 
-    describe '#sign_on_tokens' do
+    describe '#sign_on_token' do
       let(:headers) do
         {
           'X-Application-ID' => Rallio.application_id,
@@ -78,11 +78,11 @@ module Rallio
 
       it 'calls create on SignOnToken with user id' do
         expect(SignOnToken).to receive(:create).with(user_id: user.id)
-        user.sign_on_tokens
+        user.sign_on_token
       end
 
       it 'returns a SignOnToken' do
-        expect(user.sign_on_tokens).to be_a SignOnToken
+        expect(user.sign_on_token).to be_a SignOnToken
       end
     end
 

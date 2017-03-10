@@ -111,11 +111,11 @@ module ResponseFixtures
     {
       "account_ownerships" => [
         {
-          "user_id" => 2699,
-          "account_id" => 9569,
+          "user_id" => 100,
+          "account_id" => 100,
           "account_name" => "Awesome Haircuts New York City",
-          "account_franchisor_id" => 1193,
-          "account_franchisor_name" => "Bluewater API Test Franchisor 1"
+          "account_franchisor_id" => 300,
+          "account_franchisor_name" => "Awesome Haircuts Franchise"
         }
       ]
     }
@@ -123,7 +123,13 @@ module ResponseFixtures
 
   def franchisor_ownerships_response
     {
-      "franchisor_ownerships" => []
+      "franchisor_ownerships" => [
+        {
+          "user_id" => 100,
+          "franchisor_id" => 300,
+          "franchisor_name" => "Awesome Haircuts Franchise",
+        }
+      ]
     }
   end
 end

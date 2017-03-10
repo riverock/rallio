@@ -16,22 +16,23 @@ module Rallio
           'X-Application-Secret' => Rallio.application_secret
         }
       end
-      let(:user_id) { access_token[:user_id] }
+      let(:user_id) { access_token['user_id'] }
 
       it 'calls new with passed args' do
-        expect(described_class).to receive(:post).with("/users/#{user_id}/access_token", headers: headers)
+        expect(described_class).to receive(:post).with("/users/#{user_id}/access_tokens", headers: headers)
         described_class.create(user_id: user_id)
       end
 
       it 'returns an AccessToken object' do
-        expect(described_class.create(user_id: user_id).to_hash).to eq access_token
+        expected = access_token.inject({}) { |h, (k, v)| h.merge!({ k.to_sym => v }) }
+        expect(described_class.create(user_id: user_id).to_hash).to eq expected
       end
     end
 
     describe '#destroy' do
       let(:headers) do
         {
-          'Authentication' => "Bearer #{access_token[:access_token]}"
+          'Authorization' => "Bearer #{access_token['access_token']}"
         }
       end
 

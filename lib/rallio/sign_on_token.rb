@@ -6,7 +6,7 @@ module Rallio
 
     def self.create(user_id:)
       response = self.post("/users/#{user_id}/sign_on_tokens", headers: app_credentials)
-      new response.parsed_response
+      new response.parsed_response['sign_on_token']
     end
   end
 end

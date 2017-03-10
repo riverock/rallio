@@ -6,12 +6,12 @@ module Rallio
     attribute :scopes, String
 
     def self.create(user_id:)
-      response = self.post("/users/#{user_id}/access_token", headers: app_credentials)
+      response = self.post("/users/#{user_id}/access_tokens", headers: app_credentials)
       new response.parsed_response
     end
 
     def destroy
-      headers = { 'Authentication' => "Bearer #{access_token}" }
+      headers = { 'Authorization' => "Bearer #{access_token}" }
       self.class.delete('/access_token', headers: headers)
       true
     end

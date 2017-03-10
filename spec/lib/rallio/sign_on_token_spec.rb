@@ -1,6 +1,6 @@
 module Rallio
   describe SignOnToken do
-    let(:parsed_response) { sign_on_token[:sign_on_token] }
+    let(:parsed_response) { sign_on_token }
     let(:api_response) { double(:api_response, parsed_response: parsed_response) }
 
     before do
@@ -24,7 +24,8 @@ module Rallio
       end
 
       it 'returns a SignOnToken object' do
-        expect(described_class.create(user_id: user_id).token).to eq sign_on_token[:sign_on_token][:token]
+        puts described_class.create(user_id: user_id).inspect
+        expect(described_class.create(user_id: user_id).token).to eq sign_on_token['sign_on_token']['token']
       end
     end
   end

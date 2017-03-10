@@ -1,11 +1,11 @@
 module Rallio
   describe Review do
     let(:token) { access_token[:access_token] }
-    let(:headers) { { 'Authentication' => "Bearer #{token}" } }
+    let(:headers) { { 'Authorization' => "Bearer #{token}" } }
     let(:parsed_response) { reviews_response }
     let(:api_response) { double(:api_response, parsed_response: parsed_response) }
 
-    subject { described_class.new(access_token: token, **parsed_response) }
+    subject { described_class.new(parsed_response) }
 
     before do
       allow(described_class).to receive(:get).and_return(api_response)
@@ -41,14 +41,14 @@ module Rallio
     describe '#reply' do
       let(:reply) { "this is my reply" }
       let(:headers) do
-        { 'Authentication' => "Bearer #{token}" }
+        { 'Authorization' => "Bearer #{token}" }
       end
 
       it 'calls out to send passed in reply string' do
         expect(described_class).to receive(:post)
           .with("/reviews/#{subject.id}/reply", headers: headers, body: { message: reply })
 
-        subject.reply(reply)
+        subject.reply(message: reply, access_token: token)
       end
     end
   end

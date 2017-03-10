@@ -19,14 +19,14 @@ module Rallio
     attribute :review_reply_at, DateTime
 
     def self.all(type:, id:, access_token:)
-      headers = { 'Authentication' => "Bearer #{access_token}" }
+      headers = { 'Authorization' => "Bearer #{access_token}" }
       response = self.get("/#{type}/#{id}/reviews", headers: headers)
-      response.parsed_response[:reviews].map { |r| new access_token: access_token, **r }
+      response.parsed_response['reviews'].map { |r| new(r) }
     end
 
-    def reply(text)
-      headers = { 'Authentication' => "Bearer #{access_token}" }
-      self.class.post("/reviews/#{id}/reply", headers: headers, body: { message: text })
+    def reply(message:, access_token:)
+      headers = { 'Authorization' => "Bearer #{access_token}" }
+      self.class.post("/reviews/#{id}/reply", headers: headers, body: { message: message })
     end
   end
 end

@@ -113,16 +113,16 @@ module Rallio
     describe '#account_ownerships' do
       let(:parsed_response) { account_ownerships_response }
       let(:token) { Rallio::AccessToken.new(access_tokens_response) }
-      let(:headers) { { 'Authorization' => "Bearer #{token.access_token}" } }
 
       subject { described_class.new(user_response) }
 
       before do
         subject.access_token = token
+        allow(AccountOwnership).to receive(:get).and_return(api_response)
       end
 
       it 'calls out to get accounts the user has access to' do
-        expect(described_class).to receive(:get).with('/account_ownerships', headers: headers)
+        expect(AccountOwnership).to receive(:for).with(access_token: token.access_token)
         subject.account_ownerships
       end
 
@@ -134,16 +134,16 @@ module Rallio
     describe '#franchisor_ownerships' do
       let(:parsed_response) { franchisor_ownerships_response }
       let(:token) { Rallio::AccessToken.new(access_tokens_response) }
-      let(:headers) { { 'Authorization' => "Bearer #{token.access_token}" } }
 
       subject { described_class.new(user_response) }
 
       before do
         subject.access_token = token
+        allow(FranchisorOwnership).to receive(:get).and_return(api_response)
       end
 
       it 'calls out to get accounts the user has access to' do
-        expect(described_class).to receive(:get).with('/franchisor_ownerships', headers: headers)
+        expect(FranchisorOwnership).to receive(:for).with(access_token: token.access_token)
         subject.franchisor_ownerships
       end
 

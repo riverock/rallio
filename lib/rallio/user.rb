@@ -28,13 +28,11 @@ module Rallio
     end
 
     def account_ownerships
-      response = self.class.get('/account_ownerships', headers: user_credentials)
-      response.parsed_response['account_ownerships'].map { |a| AccountOwnership.new(a) }
+      AccountOwnership.for(access_token: access_token.access_token)
     end
 
     def franchisor_ownerships
-      response = self.class.get('/franchisor_ownerships', headers: user_credentials)
-      response.parsed_response['franchisor_ownerships'].map { |f| FranchisorOwnership.new(f) }
+      FranchisorOwnership.for(access_token: access_token.access_token)
     end
 
     # Initially this endpoint was in the API docs but it appears it may not be

@@ -165,6 +165,28 @@ access_token = Rallio::AccessToken.new(access_token: '4a25dd89e50bd0a0db1eeae658
 access_token.destroy                              # => true
 ```
 
+### FranchisorOwnership
+
+#### .for
+
+Returns all franchisors for a given access token.
+
+```ruby
+FranchisorOwnership.for(access_token: '4a25dd89e50bd0a0db1eeae65864fe6b')
+# => [#<Rallio::FranchisorOwnership:0x007f93d8986340 @user_id=100, @franchisor_id=300, @franchisor_name="Awesome Haircuts Franchisor 1">]
+```
+
+### AccountOwnership
+
+#### .for
+
+Returns all accounts for a given access token.
+
+```ruby
+AccountOwnership.for(access_token: '4a25dd89e50bd0a0db1eeae65864fe6b')
+# => [#<Rallio::AccountOwnership:0x007fc3aaaa70b0 @user_id=100, @account_id=200, @account_name="Awesome Haircuts New York City", @account_franchisor_id=300, @account_franchisor_name="Awesome Haircuts Franchisor 1">]
+```
+
 ### Account
 
 These gives access to account info that a user has access to. In order to query

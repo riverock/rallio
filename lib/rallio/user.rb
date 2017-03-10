@@ -32,14 +32,14 @@ module Rallio
       response.parsed_response
     end
 
-    def me
-      raise StandardError, "this endpoint isn't implemented yet"
-      # response = self.class.get('/users/me', headers: user_credentials)
-      # self.attributes = response.parsed_response
-      # self
-    end
+    # def me
+    #   response = self.class.get('/users/me', headers: user_credentials)
+    #   self.attributes = response.parsed_response
+    #   self
+    # end
 
     private
+
     def user_credentials
       { 'Authorization' => "Bearer #{access_token.access_token}" }
     end

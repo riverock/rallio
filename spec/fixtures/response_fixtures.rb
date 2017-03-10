@@ -79,4 +79,51 @@ module ResponseFixtures
       ]
     }
   end
+
+  def franchisors_response
+    {
+      "franchisors" => [
+        {
+          "id" => 100,
+          "name" => "Awesome Haircuts"
+        }
+      ]
+    }
+  end
+
+  def accounts_response
+    {
+      "accounts" => [
+        {
+          "id" => 100,
+          "name" => "Awesome Haircuts New York City",
+          "short_name" => "AH-NYC",
+          "url" => "https://awesomehaircuts.fake",
+          "city" => "New York",
+          "country_code" => "US",
+          "time_zone" => "Eastern Time (US & Canada)"
+        }
+      ]
+    }
+  end
+
+  def account_ownerships_response
+    {
+      "account_ownerships" => [
+        {
+          "user_id" => 2699,
+          "account_id" => 9569,
+          "account_name" => "Awesome Haircuts New York City",
+          "account_franchisor_id" => 1193,
+          "account_franchisor_name" => "Bluewater API Test Franchisor 1"
+        }
+      ]
+    }
+  end
+
+  def franchisor_ownerships_response
+    {
+      "franchisor_ownerships" => []
+    }
+  end
 end

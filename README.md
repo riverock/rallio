@@ -82,7 +82,8 @@ user.sign_on_token
 #### #access_token
 
 With an instantiated user object you can call to get an access token for the
-given user.
+given user. These access tokens do not expire at the moment so it is recommended
+that you store this and reuse the token.
 
 ```ruby
 user

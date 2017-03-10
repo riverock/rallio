@@ -24,7 +24,6 @@ module Rallio
       end
 
       it 'returns a SignOnToken object' do
-        puts described_class.create(user_id: user_id).inspect
         expect(described_class.create(user_id: user_id).token).to eq sign_on_tokens_response['sign_on_token']['token']
       end
     end

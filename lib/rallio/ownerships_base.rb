@@ -10,5 +10,9 @@ module Rallio
       response = self.post("/users/#{user_id}/#{url_segment}", headers: app_credentials, body: payload)
       new response.parsed_response["#{response_key}"]
     end
+
+    def self.destroy(user_id:, object_id:)
+      self.delete("/users/#{user_id}/#{url_segment}/#{object_id}", headers: app_credentials)
+    end
   end
 end

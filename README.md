@@ -185,6 +185,15 @@ Rallio::FranchisorOwnership.create(user_id: 100, franchisor_id: 300)
 # => <Rallio::FranchisorOwnership:0x007f93d8986340 @user_id=100, @franchisor_id=300, @franchisor_name="Awesome Haircuts Franchisor 1">
 ```
 
+#### .destroy
+
+Destroys a relationship between user and franchisor.
+
+```ruby
+Rallio::FranchisorOwnership.destroy(user_id: 100, franchisor_id: 300)
+# => {}
+```
+
 ### AccountOwnership
 
 #### .for
@@ -192,7 +201,7 @@ Rallio::FranchisorOwnership.create(user_id: 100, franchisor_id: 300)
 Returns all accounts for a given access token.
 
 ```ruby
-AccountOwnership.for(access_token: '4a25dd89e50bd0a0db1eeae65864fe6b')
+Rallio::AccountOwnership.for(access_token: '4a25dd89e50bd0a0db1eeae65864fe6b')
 # => [<Rallio::AccountOwnership:0x007fc3aaaa70b0 @user_id=100, @account_id=200, @account_name="Awesome Haircuts New York City", @account_franchisor_id=300, @account_franchisor_name="Awesome Haircuts Franchisor 1">]
 ```
 
@@ -203,6 +212,15 @@ This creates an association between a user and an Account.
 ```ruby
 Rallio::AccountOwnership.create(user_id: 100, account_id: 200)
 # => <Rallio::AccountOwnership:0x007fc3aaaa70b0 @user_id=100, @account_id=200, @account_name="Awesome Haircuts New York City", @account_franchisor_id=300, @account_franchisor_name="Awesome Haircuts Franchisor 1">
+```
+
+#### .destroy
+
+Destroys a relationship between user and account.
+
+```ruby
+Rallio::AccountOwnership.destroy(user_id: 100, account_id: 200)
+# => {}
 ```
 
 ### Franchisor

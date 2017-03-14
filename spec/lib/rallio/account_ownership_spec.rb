@@ -44,5 +44,22 @@ module Rallio
         expect(described_class.create(user_id: user.id, payload: payload)).to be_a(AccountOwnership)
       end
     end
+
+    describe '.destroy' do
+      let(:parsed_response) { nil }
+      let(:user) { Rallio::User.new(user_response) }
+      let(:headers) do
+        {
+          'X-Application-ID' => Rallio.application_id,
+          'X-Application-Secret' => Rallio.application_secret
+        }
+      end
+      let(:account_id) { 200 }
+
+      it 'calls out to destroy a AccountOwnership' do
+        expect(described_class).to receive(:delete).with("/users/#{user.id}/account_ownerships/#{account_id}", headers: headers)
+        described_class.destroy(user_id: user.id, object_id: account_id)
+      end
+    end
   end
 end

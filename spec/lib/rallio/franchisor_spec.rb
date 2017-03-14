@@ -40,8 +40,12 @@ module Rallio
       end
       let(:parsed_response) { accounts_response }
 
+      before do
+        allow(Rallio::Account).to receive(:get).and_return(api_response)
+      end
+
       it 'calls out to get all accounts for franchisor' do
-        expect(described_class).to receive(:get).with("/franchisors/#{subject.id}/accounts", headers: headers)
+        expect(Rallio::Account).to receive(:for).with(franchisor_id: subject.id)
         subject.accounts
       end
 

@@ -205,6 +205,29 @@ Rallio::AccountOwnership.create(user_id: 100, account_id: 200)
 # => <Rallio::AccountOwnership:0x007fc3aaaa70b0 @user_id=100, @account_id=200, @account_name="Awesome Haircuts New York City", @account_franchisor_id=300, @account_franchisor_name="Awesome Haircuts Franchisor 1">
 ```
 
+### Franchisor
+
+#### .all
+
+Returns all franchisors for a given set of app credentials.
+
+```ruby
+Rallio::Franchisor.all
+# => [<Rallio::Franchisor:0x007fa944c30e48 @id=100, @name="Awesome Haircuts", @short_name=nil, @url=nil, @city=nil, @country_code=nil, @time_zone=nil>]
+```
+
+#### #accounts
+
+Returns all accounts associated with a franchisor.
+
+```ruby
+franchisor = Rallio::Franchisor.new(id: 100)
+# => <Rallio::Franchisor:0x007fa944c30e48 @id=100, @name=nil, @short_name=nil, @url=nil, @city=nil, @country_code=nil, @time_zone=nil>
+
+franchisor.accounts
+# => [<Rallio::Account:0x007f801bb0a610 @id=100, @name="Awesome Haircuts New York City", @short_name="AH-NYC", @url="https://awesomehaircuts.fake", @city="New York", @country_code="US", @time_zone="Eastern Time (US & Canada)">]
+```
+
 ### Account
 
 These gives access to account info that a user has access to. In order to query
@@ -215,7 +238,16 @@ user.access_token
 # => <Rallio::AccessToken @access_token="4a25dd89e50bd0a0db1eeae65864fe6b", @user_id=100, @expires_at=nil, @scopes="user_info basic_access">
 ```
 
-#### .reviews
+#### .for
+
+Get all accounts for a given franchisor_id.
+
+```ruby
+accounts = Rallio::Account.for(franchisor_id: 200)
+# => [<Rallio::Account:0x007f801bb0a610 @id=100, @name="Awesome Haircuts New York City", @short_name="AH-NYC", @url="https://awesomehaircuts.fake", @city="New York", @country_code="US", @time_zone="Eastern Time (US & Canada)">]
+```
+
+#### #reviews
 
 This is a convenience method to get reviews for a given account. All that is
 needed is a `Rallio::Account` object instantiated with a valid account id. This

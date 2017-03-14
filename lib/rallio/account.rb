@@ -12,6 +12,11 @@ module Rallio
       Review.all(type: type, id: id, access_token: access_token)
     end
 
+    def self.for(franchisor_id:)
+      response = self.get("/franchisors/#{franchisor_id}/accounts", headers: app_credentials)
+      response.parsed_response['accounts'].map { |a| new a }
+    end
+
     private
 
     def type

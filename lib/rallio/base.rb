@@ -11,11 +11,5 @@ module Rallio
         'X-Application-Secret' => Rallio.application_secret
       }
     end
-
-    private
-
-    def app_credentials
-      self.class.app_credentials
-    end
   end
 end

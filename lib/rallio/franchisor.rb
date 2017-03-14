@@ -6,8 +6,7 @@ module Rallio
     end
 
     def accounts
-      response = self.class.get("/franchisors/#{id}/accounts", headers: app_credentials)
-      response.parsed_response['accounts'].map { |a| Rallio::Account.new(a) }
+      Rallio::Account.for(franchisor_id: id)
     end
 
     private

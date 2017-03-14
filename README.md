@@ -248,14 +248,6 @@ franchisor.accounts
 
 ### Account
 
-These gives access to account info that a user has access to. In order to query
-the API using this class you will first need a user access token.
-
-```ruby
-user.access_token
-# => <Rallio::AccessToken @access_token="4a25dd89e50bd0a0db1eeae65864fe6b", @user_id=100, @expires_at=nil, @scopes="user_info basic_access">
-```
-
 #### .for
 
 Get all accounts for a given franchisor_id.
@@ -265,6 +257,26 @@ accounts = Rallio::Account.for(franchisor_id: 200)
 # => [<Rallio::Account:0x007f801bb0a610 @id=100, @name="Awesome Haircuts New York City", @short_name="AH-NYC", @url="https://awesomehaircuts.fake", @city="New York", @country_code="US", @time_zone="Eastern Time (US & Canada)">]
 ```
 
+#### .created
+
+Creates account for given franchisor_id.
+
+```ruby
+payload = {
+  account: {
+    name: 'Awesome Test Account',
+    short_name: 'ATA-1',
+    url: 'https://ata.example',
+    city: 'Narnia',
+    country_code: 'US',
+    time_zone: 'Central Time (US & Canada)'
+  }
+}
+
+Rallio::Account.create(franchisor_id: 200, payload: payload)
+# => { account: { name: 'Awesome Test Account', short_name: 'ATA-1', url: 'https://ata.example', city: 'Narnia', country_code: 'US', time_zone: 'Central Time (US & Canada)' } }
+```
+
 #### #reviews
 
 This is a convenience method to get reviews for a given account. All that is
@@ -272,6 +284,9 @@ needed is a `Rallio::Account` object instantiated with a valid account id. This
 calls the `Rallio::Review.all` method to get reviews.
 
 ```ruby
+user.access_token
+# => <Rallio::AccessToken @access_token="4a25dd89e50bd0a0db1eeae65864fe6b", @user_id=100, @expires_at=nil, @scopes="user_info basic_access">
+
 account = Rallio::Account.new(id: 9397)
 # => <Rallio::Account:0x007ff4d8160f60 @id=9397, @name=nil>
 

@@ -9,6 +9,7 @@ module Rallio
       Rallio.application_id = 'foobar'
       Rallio.application_secret = 'bizbaz'
       allow(described_class).to receive(:get).and_return(api_response)
+      allow(described_class).to receive(:post).and_return(api_response)
     end
 
     subject { account }
@@ -29,6 +30,38 @@ module Rallio
 
       it 'returns an array with Account objects' do
         expect(described_class.for(franchisor_id: franchisor_id)).to include(a_kind_of(Rallio::Account))
+      end
+    end
+
+    describe '.create' do
+      let(:franchisor_id) { 200 }
+      let(:headers) do
+        {
+          'X-Application-ID' => Rallio.application_id,
+          'X-Application-Secret' => Rallio.application_secret
+        }
+      end
+      let(:payload) do
+        {
+          account: {
+            name: 'Awesome Test Account',
+            short_name: 'ATA-1',
+            url: 'https://ata.example',
+            city: 'Narnia',
+            country_code: 'US',
+            time_zone: 'Central Time (US & Canada)'
+          }
+        }
+      end
+      let(:parsed_response) { payload }
+
+      it 'calls out to create a new account' do
+        expect(described_class).to receive(:post).with("/franchisors/#{franchisor_id}/accounts", headers: headers, body: payload)
+        described_class.create(franchisor_id: franchisor_id, payload: payload)
+      end
+
+      it 'returns has of created record' do
+        expect(described_class.create(franchisor_id: franchisor_id, payload: payload)).to be_a Hash
       end
     end
 

@@ -17,6 +17,10 @@ module Rallio
       response.parsed_response['accounts'].map { |a| new a }
     end
 
+    def self.create(franchisor_id:, payload:)
+      self.post("/franchisors/#{franchisor_id}/accounts", headers: app_credentials, body: payload).parsed_response
+    end
+
     private
 
     def type

@@ -33,14 +33,15 @@ module Rallio
           'X-Application-Secret' => Rallio.application_secret
         }
       end
+      let(:payload) { { account_id: 200 } }
 
       it 'calls out to create an ownership for the given user id' do
-        expect(described_class).to receive(:post).with("/users/#{user.id}/account_ownerships", headers: headers)
-        described_class.create(user_id: user.id)
+        expect(described_class).to receive(:post).with("/users/#{user.id}/account_ownerships", headers: headers, body: payload)
+        described_class.create(user_id: user.id, payload: payload)
       end
 
       it 'returns an AccountOwnership' do
-        expect(described_class.create(user_id: user.id)).to be_a(AccountOwnership)
+        expect(described_class.create(user_id: user.id, payload: payload)).to be_a(AccountOwnership)
       end
     end
   end

@@ -2,9 +2,13 @@ module Rallio
   # Represents a user object as it comes from Rallio.
   #
   # @!attribute [rw] id
+  #   @return [Integer] unique id for user
   # @!attribute [rw] email
+  #   @return [String] user email
   # @!attribute [rw] first_name
+  #   @return [String] user first name
   # @!attribute [rw] last_name
+  #   @return [String] user last name
   class User < Base
     attribute :id, Integer
     attribute :email, String

@@ -2,10 +2,15 @@ module Rallio
   # Represents an account ownership object as it comes from Rallio.
   #
   # @!attribute [rw] user_id
+  #   @return [Integer] unique id for user
   # @!attribute [rw] account_id
+  #   @return [Integer] unique id for account
   # @!attribute [rw] account_name
+  #   @return [String] account name
   # @!attribute [rw] account_franchisor_id
+  #   @return [Integer] unique id for franchisor
   # @!attribute [rw] account_franchisor_name
+  #   @return [String] franchisor name
   class AccountOwnership < OwnershipsBase
     attribute :user_id, Integer
     attribute :account_id, Integer

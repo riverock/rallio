@@ -2,12 +2,13 @@ module Rallio
   # Represents an access token object as it comes from Rallio.
   #
   # @!attribute [rw] access_token
-  #   Access token string
+  #   @return [String] actual access token string
   # @!attribute [rw] user_id
+  #   @return [Integer] unique id for user
   # @!attribute [rw] expires_at
   #   @return [DateTime, nil] expiration DateTime or nil if access token never expires
   # @!attribute [rw] scopes
-  #   List of oauth scopes for the access token
+  #   @return [String] list of oauth scopes for the access token
   class AccessToken < Base
     attribute :access_token, String
     attribute :user_id, Integer

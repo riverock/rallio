@@ -2,10 +2,11 @@ module Rallio
   # Represents a sign on token object as it comes from Rallio.
   #
   # @!attribute [rw] token
+  #   @return [String] token for SSO url
   # @!attribute [rw] expires_at
-  #   DateTime token and url will become invalid.
+  #   @return [DateTime] DateTime token and url will become invalid.
   # @!attribute [rw] url
-  #   Url to redirect user to for SSO with token embedded
+  #   @return [String] url to redirect user to for SSO with token embedded
   class SignOnToken < Base
     attribute :token, String
     attribute :expires_at, DateTime

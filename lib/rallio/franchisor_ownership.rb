@@ -2,8 +2,11 @@ module Rallio
   # Represents a franchisor ownership as it comes from Rallio.
   #
   # @!attribute [rw] user_id
+  #   @return [Integer] unique id for user
   # @!attribute [rw] franchisor_id
+  #   @return [Integer] unique id for franchisor
   # @!attribute [rw] franchisor_name
+  #   @return [String] franchisor name
   class FranchisorOwnership < OwnershipsBase
     attribute :user_id, Integer
     attribute :franchisor_id, Integer

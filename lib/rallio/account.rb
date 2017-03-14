@@ -2,12 +2,19 @@ module Rallio
   # Represents an account object as it comes from Rallio.
   #
   # @!attribute [rw] id
+  #   @return [Integer] unique id for account
   # @!attribute [rw] name
+  #   @return [String] account name
   # @!attribute [rw] short_name
+  #   @return [String] account short name
   # @!attribute [rw] url
+  #   @return [String] account url
   # @!attribute [rw] city
+  #   @return [String] account city
   # @!attribute [rw] country_code
+  #   @return [String] account country code
   # @!attribute [rw] time_zone
+  #   @return [String] account time zone
   class Account < Base
     attribute :id, Integer
     attribute :name, String

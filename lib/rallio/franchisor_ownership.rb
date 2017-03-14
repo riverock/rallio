@@ -1,13 +1,15 @@
 module Rallio
-  class FranchisorOwnership < Base
+  class FranchisorOwnership < OwnershipsBase
     attribute :user_id, Integer
     attribute :franchisor_id, Integer
     attribute :franchisor_name, String
 
-    def self.for(access_token:)
-      headers = { 'Authorization' => "Bearer #{access_token}" }
-      response = self.get('/franchisor_ownerships', headers: headers)
-      response.parsed_response['franchisor_ownerships'].map { |f| new(f) }
+    def self.url_segment
+      'franchisor_ownerships'
+    end
+
+    def self.response_key
+      'franchisor_ownership'
     end
   end
 end

@@ -172,8 +172,17 @@ access_token.destroy                              # => true
 Returns all franchisors for a given access token.
 
 ```ruby
-FranchisorOwnership.for(access_token: '4a25dd89e50bd0a0db1eeae65864fe6b')
-# => [#<Rallio::FranchisorOwnership:0x007f93d8986340 @user_id=100, @franchisor_id=300, @franchisor_name="Awesome Haircuts Franchisor 1">]
+Rallio::FranchisorOwnership.for(access_token: '4a25dd89e50bd0a0db1eeae65864fe6b')
+# => [<Rallio::FranchisorOwnership:0x007f93d8986340 @user_id=100, @franchisor_id=300, @franchisor_name="Awesome Haircuts Franchisor 1">]
+```
+
+#### .create
+
+This creates an association between a user and a Franchisor.
+
+```ruby
+Rallio::FranchisorOwnership.create(user_id: 100, franchisor_id: 300)
+# => <Rallio::FranchisorOwnership:0x007f93d8986340 @user_id=100, @franchisor_id=300, @franchisor_name="Awesome Haircuts Franchisor 1">
 ```
 
 ### AccountOwnership
@@ -184,7 +193,16 @@ Returns all accounts for a given access token.
 
 ```ruby
 AccountOwnership.for(access_token: '4a25dd89e50bd0a0db1eeae65864fe6b')
-# => [#<Rallio::AccountOwnership:0x007fc3aaaa70b0 @user_id=100, @account_id=200, @account_name="Awesome Haircuts New York City", @account_franchisor_id=300, @account_franchisor_name="Awesome Haircuts Franchisor 1">]
+# => [<Rallio::AccountOwnership:0x007fc3aaaa70b0 @user_id=100, @account_id=200, @account_name="Awesome Haircuts New York City", @account_franchisor_id=300, @account_franchisor_name="Awesome Haircuts Franchisor 1">]
+```
+
+#### .create
+
+This creates an association between a user and an Account.
+
+```ruby
+Rallio::AccountOwnership.create(user_id: 100, account_id: 200)
+# => <Rallio::AccountOwnership:0x007fc3aaaa70b0 @user_id=100, @account_id=200, @account_name="Awesome Haircuts New York City", @account_franchisor_id=300, @account_franchisor_name="Awesome Haircuts Franchisor 1">
 ```
 
 ### Account

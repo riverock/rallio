@@ -109,6 +109,12 @@ module ResponseFixtures
     }
   end
 
+  def account_ownership_response
+    {
+      "account_ownership" => account_ownerships_response["account_ownerships"].first
+    }
+  end
+
   def franchisor_ownerships_response
     {
       "franchisor_ownerships" => [
@@ -118,6 +124,12 @@ module ResponseFixtures
           "franchisor_name" => "Awesome Haircuts Franchise",
         }
       ]
+    }
+  end
+
+  def franchisor_ownership_response
+    {
+      "franchisor_ownership" => franchisor_ownerships_response["franchisor_ownerships"].first
     }
   end
 end

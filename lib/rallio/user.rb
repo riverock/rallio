@@ -43,11 +43,5 @@ module Rallio
     #   self.attributes = response.parsed_response
     #   self
     # end
-
-    private
-
-    def user_credentials
-      { 'Authorization' => "Bearer #{access_token.access_token}" }
-    end
   end
 end

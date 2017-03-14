@@ -5,6 +5,10 @@ module Rallio
 
     base_uri 'https://app.rallio.com/api/v1'
 
+    # The credentials that can be used in the headers of any request requiring
+    # app level credentials
+    #
+    # @return [Hash] credentials hash
     def self.app_credentials
       {
         'X-Application-ID' => Rallio.application_id,

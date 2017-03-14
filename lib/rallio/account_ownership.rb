@@ -18,12 +18,12 @@ module Rallio
     attribute :account_franchisor_id, Integer
     attribute :account_franchisor_name, String
 
-    # (see Rallio::FranchisorOwnership#self.url_segment)
+    # (see Rallio::FranchisorOwnership.url_segment)
     def self.url_segment
       'account_ownerships'
     end
 
-    # (see Rallio::FranchisorOwnership#self.response_key)
+    # (see Rallio::FranchisorOwnership.response_key)
     def self.response_key
       'account_ownership'
     end

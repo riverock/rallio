@@ -17,8 +17,8 @@ module Rallio
 
     # Creates new access token for user_id.
     #
-    # NOTE: These token do not expire so it is suggested (recommended) that the
-    #       token be cached and reused whenever possible.
+    # NOTE: These tokens do not expire so it is suggested (recommended) that the
+    # token be cached and reused whenever possible.
     #
     # @param user_id [Integer]
     # @return [Rallio::AccessToken]

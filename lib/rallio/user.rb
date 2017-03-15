@@ -25,7 +25,7 @@ module Rallio
     # @return [Array<Rallio::User>] array of users accessible to application
     def self.accessible_users
       response = self.get('/accessible_users', headers: app_credentials)
-      response.parsed_response['users'].map { |u| User.new(u) }
+      response.parsed_response['users'].map { |u| new u }
     end
 
     # Create a user on the Rallio platform.
@@ -50,6 +50,9 @@ module Rallio
 
     # Creates or returns the API access token for user.
     # @see Rallio::AccessToken
+    #
+    # NOTE: These tokens do not expire so it is suggested (recommended) that the
+    # token be cached and reused whenever possible.
     #
     # @return [Rallio::AccessToken]
     def access_token

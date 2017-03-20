@@ -111,10 +111,7 @@ user.franchisor_ownerships
 # => [#<Rallio::FranchisorOwnership:0x007f93d8986340 @user_id=100, @franchisor_id=300, @franchisor_name="Awesome Haircuts Franchisor 1">]
 ```
 
-#### #me
-
-**NOTE:** This endpoint is in the docs but it appears it may not be implemented.
-This will remain here until that is cleared up.
+#### #dashboard
 
 This calls out and gets the user info for a given id. All that is needed is to
 instantiate an instance with a valid user id an calling me will pull the rest
@@ -124,7 +121,7 @@ of the information.
 user = Rallio::User.new(id: 100)
 # => <Rallio::User @id=100, @email=nil, @first_name=nil, @last_name=nil, @accounts=[], @franchisors=[]>
 
-user.me
+user.dashboard
 # => <Rallio::User @id=100, @email="bob@yourcompany.com", @first_name="Bob", @last_name="Anderson", @accounts=[], @franchisors=[]>
 ```
 

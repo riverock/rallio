@@ -74,6 +74,9 @@ module Rallio
       FranchisorOwnership.for(access_token: access_token.access_token)
     end
 
+    # Retreives current data for user.
+    #
+    # @return [Rallio::User]
     def dashboard
       response = self.class.get('/dashboard', headers: user_credentials)
       self.attributes = response.parsed_response

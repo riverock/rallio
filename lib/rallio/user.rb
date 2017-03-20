@@ -14,9 +14,8 @@ module Rallio
     attribute :email, String
     attribute :first_name, String
     attribute :last_name, String
-    # This may not be needed anymore, API still in flux
-    #attribute :accounts, Array[Account]
-    #attribute :franchisors, Array[Franchisor]
+    attribute :accounts, Array[Account]
+    attribute :franchisors, Array[Franchisor]
 
     attr_writer :access_token
 
@@ -75,13 +74,18 @@ module Rallio
       FranchisorOwnership.for(access_token: access_token.access_token)
     end
 
-    # Initially this endpoint was in the API docs but it appears it may not be
-    # implemented. This is here until that gets cleared up.
-    #
-    # def me
-    #   response = self.class.get('/users/me', headers: user_credentials)
-    #   self.attributes = response.parsed_response
-    #   self
-    # end
+    def dashboard
+      response = self.class.get('/dashboard', headers: user_credentials)
+      self.attributes = response.parsed_response
+      self
+    end
+
+    private
+
+    def user_credentials
+      {
+        'Authorization' => "Bearer #{access_token.access_token}"
+      }
+    end
   end
 end

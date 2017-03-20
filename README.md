@@ -298,10 +298,10 @@ account.reviews(access_token: user.access_token)
 This calls out to get all reviews for a given account or franchisor.
 
 ```ruby
-# type: can be either of :accounts or :franchisors
-# id: is the id for the account or franchisor
+# query_params: possible keys are: :page, :account_id, :franchisor_id, :network
+#                                  :start_date, :end_date, :rating
 # access_token: is the access token for a Rallio::User
-reviews = Rallio::Review.all(type: :accounts, id: 9397, access_token: user.access_token)
+reviews = Rallio::Review.all(query_params: {}, access_token: user.access_token)
 # => [<Rallio::Review:0x007fcf402de8f0 @access_token="4a25dd89e50bd0a0db1eeae65864fe6b", @id=227704, @account_id=9397, @account_name="Rally-O Tires New York", @network="facebook", @posted_at=#<DateTime: 2017-02-21T23:12:33+00:00 ((2457806j,83553s,0n),+0s,2299161j)>, @user_name="Andy Bobson", @user_image="https://graph.facebook.com/100009872044695/picture", @rating=5.0, @message="This is my favourite place to buy tires!", @comments=[{:user_name=>"Rally-O Tires New York", :user_image=>"https://graph.facebook.com/113397275345614/picture", :message=>"Thanks for the 5 star review!", :created_at=>"2017-02-22T00:49:53.000+00:00"}], @liked=true, @url="https://www.facebook.com/123123123", @can_reply=true, @location_name="Visiting Angels Newburyport MA", @location_image_url="https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/16266055_1428821143803214_8378119243787669723_n.jpg?oh=3268e6e30474a0aa488cfd896a6d6c06&oe=59357742", @review_reply=nil, @review_reply_at=nil>]
 ```
 

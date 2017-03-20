@@ -12,28 +12,40 @@ module Rallio
     end
 
     describe '.all' do
-      let(:path) { "/#{type}/#{id}/reviews" }
-      let(:type) { :accounts }
-      let(:id) { 9397 }
+      let(:object_params) { { account_id: '9397' } }
+      let(:query_params) do
+        {
+          page: '2',
+          network: 'google_places',
+          start_date: (Time.now - 86400).iso8601,
+          end_date: Time.now.utc.iso8601,
+          rating: '4'
+        }.merge(object_params)
+      end
 
       it 'returns an array with Review objects' do
-        results = described_class.all(type: type, id: id, access_token: token)
+        results = described_class.all(query_params: query_params, access_token: token)
         expect(results).to include(a_kind_of(Review))
+      end
+
+      it 'allows query_params to be optional with {} as default' do
+        expect(described_class).to receive(:get).with('/reviews', query: {}, headers: headers)
+        described_class.all(access_token: token)
       end
 
       context 'accounts' do
         it 'calls out to get reviews for account id' do
-          expect(described_class).to receive(:get).with(path, headers: headers)
-          described_class.all(type: type, id: id, access_token: token)
+          expect(described_class).to receive(:get).with('/reviews', query: query_params, headers: headers)
+          described_class.all(query_params: query_params, access_token: token)
         end
       end
 
       context 'franchisors' do
-        let(:type) { :franchisors }
+        let(:object_params) { { franchisor_id: '9397' } }
 
         it 'calls out to get reviews for franchisor id' do
-          expect(described_class).to receive(:get).with(path, headers: headers)
-          described_class.all(type: type, id: id, access_token: token)
+          expect(described_class).to receive(:get).with('/reviews', query: query_params, headers: headers)
+          described_class.all(query_params: query_params, access_token: token)
         end
       end
     end

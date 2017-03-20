@@ -54,15 +54,25 @@ module Rallio
     attribute :review_reply, String
     attribute :review_reply_at, DateTime
 
-    # Retreives reviews.
+    # Retreives reviews. All query_params are optional. If no query_params are
+    # passed in all reviews accessible to user are returned.
     #
-    # @param type [String] one of accounts or franchisors to get reviews for
-    # @param id [Integer] account or franchisor id to get reviews for
+    # @param query_params [Hash] params to filter results
+    # @option query_params [String] :page results page
+    # @option query_params [String] :account_id filter results to one or more
+    #   accounts, should be seperated by commas
+    # @option query_params [String] :franchisor_id filter results to a single
+    #   franchisor
+    # @option query_params [String] :network filter results to one network,
+    #   possible choices are facebook, google_places, yelp
+    # @option query_params [String] :start_date iso8601 date to start on
+    # @option query_params [String] :end_date iso8601 date to end on
+    # @option query_params [String] :rating filter by rating
     # @param access_token [String] user access token to use for authorization
     # @return [Array<Rallio::Review>]
-    def self.all(type:, id:, access_token:)
+    def self.all(query_params: {}, access_token:)
       headers = { 'Authorization' => "Bearer #{access_token}" }
-      response = self.get("/#{type}/#{id}/reviews", headers: headers)
+      response = self.get("/reviews", query: query_params, headers: headers)
       response.parsed_response['reviews'].map { |r| new(r) }
     end
 

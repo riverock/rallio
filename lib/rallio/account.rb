@@ -36,11 +36,17 @@ module Rallio
     # Creates an account.
     #
     # @param franchisor_id [Integer] franchisor_id to create account under
-    # @param payload [Hash]
-    # @option payload [Hash] :account data to create account with
-    # @return [Hash] hash of account created
-    def self.create(franchisor_id:, payload:)
-      self.post("/franchisors/#{franchisor_id}/accounts", headers: app_credentials, body: payload).parsed_response
+    # @param account [Hash]
+    # @option account [String] :name
+    # @option account [String] :short_name slug or other identifier
+    # @option account [String] :url
+    # @option account [String] :city
+    # @option account [String] :country_code
+    # @option account [String] :time_zone
+    # @return [Rallio::Account] hash of account created
+    def self.create(franchisor_id:, account:)
+      response = self.post("/franchisors/#{franchisor_id}/accounts", headers: app_credentials, body: { account: account })
+      new response.parsed_response
     end
 
     # Retreives reviews for the account.

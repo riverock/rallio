@@ -254,24 +254,22 @@ accounts = Rallio::Account.for(franchisor_id: 200)
 # => [<Rallio::Account:0x007f801bb0a610 @id=100, @name="Awesome Haircuts New York City", @short_name="AH-NYC", @url="https://awesomehaircuts.fake", @city="New York", @country_code="US", @time_zone="Eastern Time (US & Canada)">]
 ```
 
-#### .created
+#### .create
 
 Creates account for given franchisor_id.
 
 ```ruby
-payload = {
-  account: {
-    name: 'Awesome Test Account',
-    short_name: 'ATA-1',
-    url: 'https://ata.example',
-    city: 'Narnia',
-    country_code: 'US',
-    time_zone: 'Central Time (US & Canada)'
-  }
+account = {
+  name: 'Awesome Test Account',
+  short_name: 'ATA-1',
+  url: 'https://ata.example',
+  city: 'Narnia',
+  country_code: 'US',
+  time_zone: 'Central Time (US & Canada)'
 }
 
-Rallio::Account.create(franchisor_id: 200, payload: payload)
-# => { account: { name: 'Awesome Test Account', short_name: 'ATA-1', url: 'https://ata.example', city: 'Narnia', country_code: 'US', time_zone: 'Central Time (US & Canada)' } }
+Rallio::Account.create(franchisor_id: 200, account: account)
+# => <Rallio::Account:0x007f801bb0a610 @id=100, @name="Awesome Test Account", @short_name="ATA-1", @url="https://ata.example", @city="Narnia", @country_code="US", @time_zone="Central Time (US & Canada)">
 ```
 
 #### #reviews

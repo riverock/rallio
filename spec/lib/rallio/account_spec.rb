@@ -41,27 +41,25 @@ module Rallio
           'X-Application-Secret' => Rallio.application_secret
         }
       end
-      let(:payload) do
+      let(:account) do
         {
-          account: {
-            name: 'Awesome Test Account',
-            short_name: 'ATA-1',
-            url: 'https://ata.example',
-            city: 'Narnia',
-            country_code: 'US',
-            time_zone: 'Central Time (US & Canada)'
-          }
+          name: 'Awesome Test Account',
+          short_name: 'ATA-1',
+          url: 'https://ata.example',
+          city: 'Narnia',
+          country_code: 'US',
+          time_zone: 'Central Time (US & Canada)'
         }
       end
-      let(:parsed_response) { payload }
+      let(:parsed_response) { { account: account } }
 
       it 'calls out to create a new account' do
-        expect(described_class).to receive(:post).with("/franchisors/#{franchisor_id}/accounts", headers: headers, body: payload)
-        described_class.create(franchisor_id: franchisor_id, payload: payload)
+        expect(described_class).to receive(:post).with("/franchisors/#{franchisor_id}/accounts", headers: headers, body: { account: account })
+        described_class.create(franchisor_id: franchisor_id, account: account)
       end
 
       it 'returns has of created record' do
-        expect(described_class.create(franchisor_id: franchisor_id, payload: payload)).to be_a Hash
+        expect(described_class.create(franchisor_id: franchisor_id, account: account)).to be_a Rallio::Account
       end
     end
 

@@ -46,7 +46,7 @@ module Rallio
     # @return [Rallio::Account] hash of account created
     def self.create(franchisor_id:, account:)
       response = self.post("/franchisors/#{franchisor_id}/accounts", headers: app_credentials, body: { account: account })
-      new response.parsed_response
+      new response.parsed_response['account']
     end
 
     # Retreives reviews for the account.

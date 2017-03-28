@@ -19,7 +19,7 @@ module Rallio
       let(:user_id) { 100 }
 
       it 'calls out to create sign on token for user id' do
-        expect(described_class).to receive(:post).with("/users/#{user_id}/sign_on_tokens", headers: headers, params: {})
+        expect(described_class).to receive(:post).with("/users/#{user_id}/sign_on_tokens", headers: headers, query: {})
         described_class.create(user_id: user_id)
       end
 

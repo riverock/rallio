@@ -17,7 +17,7 @@ module Rallio
     # @param user_id [Integer]
     # @return [Rallio::SignOnToken]
     def self.create(user_id:, params: {})
-      response = self.post("/users/#{user_id}/sign_on_tokens", headers: app_credentials, params: params)
+      response = self.post("/users/#{user_id}/sign_on_tokens", headers: app_credentials, query: params)
       new response.parsed_response['sign_on_token']
     end
   end

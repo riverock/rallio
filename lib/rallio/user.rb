@@ -33,11 +33,8 @@ module Rallio
     # @option user [String] :email unique email address
     # @option user [String] :first_name
     # @option user [String] :last_name
-    # @param params [Hash] optional uri params sent with request
-    # @option params [String] :connect_account_id account id to display social
-    #   connections for
     # @return [Rallio::User] user object that was just created
-    def self.create(user:, params: {})
+    def self.create(user:)
       response = self.post('/users', headers: app_credentials, body: { user: user })
       new response.parsed_response['user']
     end
@@ -45,9 +42,12 @@ module Rallio
     # Creates new single signon for user to be redirected to.
     # @see Rallio::SignOnToken
     #
+    # @param params [Hash] optional uri params sent with request
+    # @option params [String] :connect_account_id account id to display social
+    #   connections for
     # @return [Rallio::SignOnToken]
-    def sign_on_token
-      SignOnToken.create(user_id: id)
+    def sign_on_token(params: {})
+      SignOnToken.create(user_id: id, params: params)
     end
 
     # Creates or returns the API access token for user.

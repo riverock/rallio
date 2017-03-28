@@ -77,7 +77,7 @@ module Rallio
       end
 
       it 'calls create on SignOnToken with user id' do
-        expect(SignOnToken).to receive(:create).with(user_id: user.id)
+        expect(SignOnToken).to receive(:create).with(user_id: user.id, params: {})
         user.sign_on_token
       end
 

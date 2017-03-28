@@ -33,8 +33,11 @@ module Rallio
     # @option user [String] :email unique email address
     # @option user [String] :first_name
     # @option user [String] :last_name
+    # @param params [Hash] optional uri params sent with request
+    # @option params [String] :connect_account_id account id to display social
+    #   connections for
     # @return [Rallio::User] user object that was just created
-    def self.create(user:)
+    def self.create(user:, params: {})
       response = self.post('/users', headers: app_credentials, body: { user: user })
       new response.parsed_response['user']
     end

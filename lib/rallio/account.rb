@@ -15,6 +15,16 @@ module Rallio
   #   @return [String] account country code
   # @!attribute [rw] time_zone
   #   @return [String] account time zone
+  # @!attribute [rw] franchisor_id
+  #   @return [String] franchisor_id account belongs to
+  # @!attribute [rw] franchisor_name
+  #   @return [String] franchisor_name account belongs to
+  # @!attribute [rw] facebook_connected
+  #   @return [String] facebook has been associated
+  # @!attribute [rw] yelp_connected
+  #   @return [String] yelp has been associated
+  # @!attribute [rw] google_connected
+  #   @return [String] google has been associated
   class Account < Base
     attribute :id, Integer
     attribute :name, String
@@ -23,6 +33,11 @@ module Rallio
     attribute :city, String
     attribute :country_code, String
     attribute :time_zone, String
+    attribute :franchisor_id, Integer
+    attribute :franchisor_name, String
+    attribute :facebook_connected, Axiom::Types::Boolean
+    attribute :yelp_connected, Axiom::Types::Boolean
+    attribute :google_connected, Axiom::Types::Boolean
 
     # Retreives accounts.
     #

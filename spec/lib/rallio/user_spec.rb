@@ -155,6 +155,7 @@ module Rallio
     describe '#dashboard' do
       let(:token) { Rallio::AccessToken.new(access_tokens_response) }
       let(:headers) { { 'Authorization' => "Bearer #{token.access_token}" } }
+      let(:parsed_response) { dashboard_response }
 
       subject { described_class.new(user_response) }
 
@@ -168,15 +169,12 @@ module Rallio
       end
 
       context 'user data changed' do
-        let(:parsed_response) { user_response }
-
-        before do
-          parsed_response[:last_name] = 'Geldoff'
-        end
-
         it 'updates the user info to reflect changes' do
           subject.dashboard
-          expect(subject.last_name).to eq parsed_response[:last_name]
+          aggregate_failures do
+            expect(subject.name).to eq parsed_response['me']['name']
+            expect(subject.accounts.first.name).to eq parsed_response['accounts'].first['name']
+          end
         end
 
         it 'returns and instance of Rallio::User' do

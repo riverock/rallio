@@ -9,11 +9,18 @@ module Rallio
   #   @return [String] user first name
   # @!attribute [rw] last_name
   #   @return [String] user last name
+  # @!attribute [rw] name
+  #   @return [String] full name if available
+  # @!attribute [rw] accounts
+  #   @return [Array<Rallio::Account>] accounts user has access to
+  # @!attribute [rw] franchisors
+  #   @return [Array<Rallio::Franchisor>] franchisors user has access to
   class User < Base
     attribute :id, Integer
     attribute :email, String
     attribute :first_name, String
     attribute :last_name, String
+    attribute :name, String
     attribute :accounts, Array[Account]
     attribute :franchisors, Array[Franchisor]
 
@@ -82,7 +89,10 @@ module Rallio
     # @return [Rallio::User]
     def dashboard
       response = self.class.get('/dashboard', headers: user_credentials)
-      self.attributes = response.parsed_response
+      puts response.parsed_response.inspect
+      self.attributes = response.parsed_response['me']
+      self.accounts = response.parsed_response['accounts']
+      self.franchisors = response.parsed_response['franchisors']
       self
     end
 

@@ -35,6 +35,33 @@ module ResponseFixtures
     accessible_users_response['users'].first
   end
 
+  def dashboard_response
+    {
+      "me" => {
+        "id" => 2,
+        "email" => "user-2@example.com",
+        "name" => "John Q User"
+      },
+      "accounts" => [
+        {
+          "id" => 100,
+          "name" => "Rally-O Tires NYC",
+          "franchisor_id" => 200,
+          "franchisor_name" => "Rally-O Tires",
+          "facebook_connected" => true,
+          "yelp_connected" => false,
+          "google_connected" => false
+        }
+      ],
+      "franchisors" => [
+        {
+          "id" => 200,
+          "name" => "Rally-O Tires"
+        }
+      ]
+    }
+  end
+
   def reviews_response
     {
       "reviews" => [

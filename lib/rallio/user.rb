@@ -89,7 +89,6 @@ module Rallio
     # @return [Rallio::User]
     def dashboard
       response = self.class.get('/dashboard', headers: user_credentials)
-      puts response.parsed_response.inspect
       self.attributes = response.parsed_response['me']
       self.accounts = response.parsed_response['accounts']
       self.franchisors = response.parsed_response['franchisors']

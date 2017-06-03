@@ -20,11 +20,23 @@ module Rallio
   # @!attribute [rw] franchisor_name
   #   @return [String] franchisor_name account belongs to
   # @!attribute [rw] facebook_connected
-  #   @return [String] facebook has been associated
+  #   @return [Boolean] facebook has been associated
+  # @!attribute [rw] facebook_needs_reconnection
+  #   @return [Boolean] facebook has lost its connection
+  # @!attribute [rw] facebook_reputation
+  #   @return [Float] average review rating for facebook
   # @!attribute [rw] yelp_connected
   #   @return [String] yelp has been associated
+  # @!attribute [rw] yelp_needs_reconnection
+  #   @return [Boolean] yelp has lost its connection
+  # @!attribute [rw] yelp_reputation
+  #   @return [Float] average review rating for yelp 
   # @!attribute [rw] google_connected
   #   @return [String] google has been associated
+  # @!attribute [rw] google_needs_reconnection
+  #   @return [Boolean] google has lost its connection
+  # @!attribute [rw] google_reputation
+  #   @return [Float] average review rating for google
   class Account < Base
     attribute :id, Integer
     attribute :name, String
@@ -36,8 +48,14 @@ module Rallio
     attribute :franchisor_id, Integer
     attribute :franchisor_name, String
     attribute :facebook_connected, Axiom::Types::Boolean
+    attribute :facebook_needs_reconnection, Axiom::Types::Boolean
+    attribute :facebook_reputation, Float
     attribute :yelp_connected, Axiom::Types::Boolean
+    attribute :yelp_needs_reconnection, Axiom::Types::Boolean
+    attribute :yelp_reputation, Float
     attribute :google_connected, Axiom::Types::Boolean
+    attribute :google_needs_reconnection, Axiom::Types::Boolean
+    attribute :google_reputation, Float
 
     # Retreives accounts.
     #

@@ -3,8 +3,6 @@ module Rallio
     include HTTParty
     include Virtus.model
 
-    attribute :error, String
-
     base_uri 'https://app.rallio.com/api/v1'
 
     # The credentials that can be used in the headers of any request requiring
